@@ -71,6 +71,6 @@ class OrderPage(BasePage):
         return self.get_text_from_element(OrderPageLocators.BUTTON_CHECK_STATUS)
 
     @allure.step("Переключаемся на открытую вкладку")
-    def switch_to_next_tab(self, url):
+    def switch_to_next_tab(self):
         self.driver.switch_to.window(self.driver.window_handles[-1])
-        self.wait_url_to_be(url)
+        self.wait_url_to_be(data.PAGE_YA_DZEN)

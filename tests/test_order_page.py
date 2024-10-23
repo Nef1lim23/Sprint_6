@@ -5,7 +5,6 @@ from locators.order_page_locators import OrderPageLocators
 from pages.order_page import OrderPage
 
 
-
 class TestOrderPage:
 
     @allure.title("Заказ самоката")
@@ -45,6 +44,5 @@ class TestOrderPage:
         order_page.click_to_element(OrderPageLocators.BUTTON_CHECK_STATUS)
         order_page.find_element_with_wait(OrderPageLocators.BUTTON_CLOSE_ORDER)
         order_page.click_to_element(OrderPageLocators.BUTTON_FOR_TRANSITION_YA_DZEN)
-        order_page.switch_to_next_tab(data.PAGE_YA_DZEN)
+        order_page.switch_to_next_tab()
         assert order_page.current_url() == data.PAGE_YA_DZEN
-
