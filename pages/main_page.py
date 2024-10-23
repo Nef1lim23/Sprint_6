@@ -1,9 +1,6 @@
 import allure
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
+import data
 from locators.main_page_locators import MainPageLocators
 from pages.base_page import BasePage
 
@@ -17,3 +14,8 @@ class MainPage(BasePage):
         self.scroll_to_element(MainPageLocators.QUESTION_LOCATOR_8)
         self.click_to_element(locator_q_formatted)
         return self.get_text_from_element(locator_a_formatted)
+
+    @allure.step("Переходим на основную страницу и принимаем куки")
+    def open_main_page_and_accepted_cookie(self):
+        self.open_page(data.HOME_PAGE_URL)
+        self.click_to_element(MainPageLocators.ACCEPT_COOKIE_BUTTON)

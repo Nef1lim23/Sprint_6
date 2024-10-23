@@ -1,17 +1,12 @@
 import allure
 import pytest
-from selenium import webdriver
+
 
 import data
 from pages.main_page import MainPage
 
 
 class TestMainPage:
-    # driver = None
-
-    @classmethod
-    def setup_class(cls):
-        cls.driver = webdriver.Firefox()
 
     @pytest.mark.parametrize(
         'num, result',
@@ -26,13 +21,8 @@ class TestMainPage:
             (7, data.ANSWER_8)
         ]
     )
-    @allure.description("Проверка вопросов на главной странице")
+    @allure.title("Проверка вопросов на главной странице")
     def test_questions_and_answers(self, driver, num, result):
         main_page = MainPage(driver)
-        main_page.open_page(data.HOME_PAGE_URL)
+        main_page.open_main_page_and_accepted_cookie()
         assert main_page.get_answer_text(num) == result
-
-    @classmethod
-    def teardown_class(cls):
-        # закрыли браузер
-        cls.driver.quit()

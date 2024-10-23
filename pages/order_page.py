@@ -1,14 +1,8 @@
-from datetime import datetime, timedelta
-
+from datetime import datetime
 import allure
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
-import conftest
 import data
 import helper
-from locators.main_page_locators import MainPageLocators
+
 from locators.order_page_locators import OrderPageLocators
 from pages.base_page import BasePage
 
@@ -16,10 +10,9 @@ from pages.base_page import BasePage
 class OrderPage(BasePage):
 
     @allure.step("Переходим на основную страницу и принимаем куки")
-    def navigation_to_order_page(self, locator):
+    def open_main_page_and_accepted_cookie(self):
         self.open_page(data.HOME_PAGE_URL)
-        self.accept_cookies(MainPageLocators.ACCEPT_COOKIE_BUTTON)
-        self.click_to_element(locator)
+        self.click_to_element(OrderPageLocators.ACCEPT_COOKIE_BUTTON)
 
     @staticmethod
     def get_locator_by_color(color):
@@ -74,15 +67,10 @@ class OrderPage(BasePage):
         self.click_to_element(OrderPageLocators.BUTTON_YES)
 
     @allure.step("Проверяем статус заказа")
-    def check_order(self, locator):
-        return self.get_text_from_element(locator)
+    def check_order(self):
+        return self.get_text_from_element(OrderPageLocators.BUTTON_CHECK_STATUS)
 
     @allure.step("Переключаемся на открытую вкладку")
     def switch_to_next_tab(self, url):
         self.driver.switch_to.window(self.driver.window_handles[-1])
-        WebDriverWait(self.driver, 5).until(EC.url_to_be(url))
-
-    @allure.step("Сравниваем текущий урл и ожидаемый")
-    def check_url(self, expected_url):
-        current_url = self.driver.current_url
-        return current_url == expected_url
+        self.wait_url_to_be(url)

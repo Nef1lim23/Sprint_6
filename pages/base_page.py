@@ -1,8 +1,6 @@
-from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
-import conftest
+
 
 
 class BasePage:
@@ -31,9 +29,11 @@ class BasePage:
         element = self.find_element_with_wait(locator)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
-    def accept_cookies(self, locator):
-        WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(locator))
-        self.driver.find_element(*locator)
+    def wait_url_to_be(self, url):
+        WebDriverWait(self.driver, 5).until(EC.url_to_be(url))
+
+    def current_url(self):
+        return self.driver.current_url
 
     @staticmethod
     def format_locators(locator_1, num):

@@ -12,6 +12,7 @@ class OrderPageLocators:
     SCOOTER_LOGO_LINK = By.XPATH, "//a[starts-with(@class, 'Header_LogoScooter')]" # Переход на основную страницу с самокатами
     YANDEX_DZEN_LOGO_LINK = By.XPATH, "//a[starts-with(@class, 'Header_LogoYandex')]" # Переход на страницу яндекс дзен
     BUTTON_NEXT = By.XPATH, "//button[contains(text(),'Далее')]"
+    ACCEPT_COOKIE_BUTTON = By.XPATH, "//button[@id='rcc-confirm-button']"
 
     #вторая страница оформления заказа
     DATE_WHEN_TO_BRING_SCOOTER = By.XPATH, "//input[@placeholder='* Когда привезти самокат']"
@@ -36,8 +37,7 @@ class OrderPageLocators:
     FORM_ACCEPTED_ORDER = By.XPATH, "//div[contains(@class, 'Order_ModalHeader')]"
 
     #Кнопки перехода на форму заказа самоката
-    BUTTON_ORDER_UP = By.XPATH, "(//button[@class='Button_Button__ra12g'])[1]"
     BUTTON_ORDER_FROM_FORM_ORDER = By.XPATH,  "(//button[@class='Button_Button__ra12g Button_Middle__1CSJM'])[1]"
-    BUTTON_ORDER_LOW = By.XPATH, "(//button[@class='Button_Button__ra12g Button_UltraBig__UU3Lp'])[1]"
+    BUTTON_ORDER_LOW = By.XPATH,  "//div[contains(@class, 'Home_FinishButton__')]//button"
 
     FOR_DEBAG = By.XPATH, "//img[@alt='Sppooter']"
