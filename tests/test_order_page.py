@@ -2,6 +2,7 @@ import allure
 import data
 from locators.main_page_locators import MainPageLocators
 from locators.order_page_locators import OrderPageLocators
+from pages.main_page import MainPage
 from pages.order_page import OrderPage
 
 
@@ -11,7 +12,8 @@ class TestOrderPage:
     @allure.description("Тест по созданию заказа и перехода на главную страницу")
     def test_order_scooter_and_return_to_the_main_page(self, driver):
         order_page = OrderPage(driver)
-        order_page.open_main_page_and_accepted_cookie()
+        main_page = MainPage(driver)
+        main_page.open_main_page_and_accepted_cookie()
         order_page.click_to_element(MainPageLocators.BUTTON_ORDER_UP)
         order_page.set_order(data.NAME,
                              data.SURNAME,
@@ -30,7 +32,8 @@ class TestOrderPage:
     @allure.description("Заказ самоката и переход на Яндекс Дзен")
     def test_order_scooter_and_transition_to_yandex_dzen(self, driver):
         order_page = OrderPage(driver)
-        order_page.open_main_page_and_accepted_cookie()
+        main_page = MainPage(driver)
+        main_page.open_main_page_and_accepted_cookie()
         order_page.find_element_with_wait(MainPageLocators.BUTTON_ORDER_LOW)
         order_page.click_to_element(MainPageLocators.BUTTON_ORDER_LOW)
         order_page.set_order(data.NAME,

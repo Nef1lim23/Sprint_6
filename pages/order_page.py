@@ -9,11 +9,6 @@ from pages.base_page import BasePage
 
 class OrderPage(BasePage):
 
-    @allure.step("Переходим на основную страницу и принимаем куки")
-    def open_main_page_and_accepted_cookie(self):
-        self.open_page(data.HOME_PAGE_URL)
-        self.click_to_element(OrderPageLocators.ACCEPT_COOKIE_BUTTON)
-
     @staticmethod
     def get_locator_by_color(color):
         if color == 'black':
