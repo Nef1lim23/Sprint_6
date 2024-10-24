@@ -30,7 +30,6 @@ class OrderPageLocators:
     BUTTON_LOGO_SCOOTER = By.XPATH, "//img[@alt='Scooter']"
 
     BUTTON_FOR_TRANSITION_YA_DZEN = By.XPATH, "//img[@alt='Yandex']"
-    LOGO_YA_DZEN = By.XPATH, "//a[contains(text(),'Скачайте приложение Дзена')]"
 
     BUTTON_YES = By.XPATH, "//button[contains(text(),'Да')]"
     BUTTON_NO = By.XPATH, "//button[contains(text(),'Нет')]"
@@ -41,3 +40,4 @@ class OrderPageLocators:
     BUTTON_ORDER_LOW = By.XPATH,  "//div[contains(@class, 'Home_FinishButton__')]//button"
 
     FOR_DEBAG = By.XPATH, "//img[@alt='Sppooter']"
+    DZEN_PAGE_LOCATOR = By.XPATH, "//a[@data-testid='logo']"
