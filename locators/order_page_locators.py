@@ -25,12 +25,8 @@ class OrderPageLocators:
     COMMENT_FOR_COURIER = By.XPATH, "//input[@placeholder='Комментарий для курьера']"
     BUTTON_CHECK_STATUS = By.XPATH, "//button[contains(text(),'Посмотреть статус')]"
     CALENDAR_BUTTON_NEXT = By.XPATH, "//button[normalize-space()='Next Month']"
-
     BUTTON_CLOSE_ORDER = By.XPATH, "//button[contains(text(),'Отменить заказ')]"
-    BUTTON_LOGO_SCOOTER = By.XPATH, "//img[@alt='Scooter']"
-
     BUTTON_FOR_TRANSITION_YA_DZEN = By.XPATH, "//img[@alt='Yandex']"
-
     BUTTON_YES = By.XPATH, "//button[contains(text(),'Да')]"
     BUTTON_NO = By.XPATH, "//button[contains(text(),'Нет')]"
     FORM_ACCEPTED_ORDER = By.XPATH, "//div[contains(@class, 'Order_ModalHeader')]"

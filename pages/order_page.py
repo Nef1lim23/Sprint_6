@@ -69,3 +69,12 @@ class OrderPage(BasePage):
     def switch_to_next_tab(self):
         self.driver.switch_to.window(self.driver.window_handles[-1])
         self.wait_url_to_be(data.PAGE_YA_DZEN)
+
+    @allure.step("Проверяем статус заказа и закрываем модальное окно")
+    def check_status_and_close_order(self):
+        self.click_to_element(OrderPageLocators.BUTTON_CHECK_STATUS)
+        self.find_element_with_wait(OrderPageLocators.BUTTON_CLOSE_ORDER)
+
+    @allure.step("Кликаем на лого(кнопку) перехода на я.дзен")
+    def click_on_button_transition_ya_dzen(self):
+        self.click_to_element(OrderPageLocators.BUTTON_FOR_TRANSITION_YA_DZEN)

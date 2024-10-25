@@ -14,7 +14,7 @@ class TestOrderPage:
         order_page = OrderPage(driver)
         main_page = MainPage(driver)
         main_page.open_main_page_and_accepted_cookie()
-        order_page.click_to_element(MainPageLocators.BUTTON_ORDER_UP)
+        main_page.click_to_button_order_up()
         order_page.set_order(data.NAME,
                              data.SURNAME,
                              data.ADDRESS,
@@ -23,9 +23,8 @@ class TestOrderPage:
                              data.DAYS_RENTAL,
                              data.COMMENT_FOR_COURIER)
         assert order_page.check_order() == data.CHECK_STATUS
-        order_page.click_to_element(OrderPageLocators.BUTTON_CHECK_STATUS)
-        order_page.find_element_with_wait(OrderPageLocators.BUTTON_CLOSE_ORDER)
-        order_page.click_to_element(OrderPageLocators.BUTTON_LOGO_SCOOTER)
+        order_page.check_status_and_close_order()
+        main_page.click_to_logo_scooter()
         assert order_page.current_url() == data.HOME_PAGE_URL
 
     @allure.title("Заказ самоката")
@@ -34,18 +33,16 @@ class TestOrderPage:
         order_page = OrderPage(driver)
         main_page = MainPage(driver)
         main_page.open_main_page_and_accepted_cookie()
-        order_page.find_element_with_wait(MainPageLocators.BUTTON_ORDER_LOW)
-        order_page.click_to_element(MainPageLocators.BUTTON_ORDER_LOW)
-        order_page.set_order(data.NAME,
-                             data.SURNAME,
-                             data.ADDRESS,
-                             data.NUM_STATION,
-                             data.COLOR_SCOOTER,
-                             data.DAYS_RENTAL,
-                             data.COMMENT_FOR_COURIER)
+        main_page.click_to_button_order_low()
+        order_page.set_order(data.NAME_2,
+                             data.SURNAME_2,
+                             data.ADDRESS_2,
+                             data.NUM_STATION_2,
+                             data.COLOR_SCOOTER_2,
+                             data.DAYS_RENTAL_2,
+                             data.COMMENT_FOR_COURIER_2)
         assert order_page.check_order() == data.CHECK_STATUS
-        order_page.click_to_element(OrderPageLocators.BUTTON_CHECK_STATUS)
-        order_page.find_element_with_wait(OrderPageLocators.BUTTON_CLOSE_ORDER)
-        order_page.click_to_element(OrderPageLocators.BUTTON_FOR_TRANSITION_YA_DZEN)
+        order_page.check_status_and_close_order()
+        order_page.click_on_button_transition_ya_dzen()
         order_page.switch_to_next_tab()
         assert order_page.find_element_with_wait(OrderPageLocators.DZEN_PAGE_LOCATOR)

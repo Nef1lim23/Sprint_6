@@ -9,3 +9,5 @@ class MainPageLocators:
 
     BUTTON_ORDER_UP = By.XPATH, "(//button[@class='Button_Button__ra12g'])[1]"
     BUTTON_ORDER_LOW = By.XPATH, "//div[contains(@class, 'Home_FinishButton__')]//button"
+
+    BUTTON_LOGO_SCOOTER = By.XPATH, "//img[@alt='Scooter']"
